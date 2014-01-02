@@ -1,0 +1,7 @@
+<h2>Welcome to Car Emporium!</h2>
+
+<% @cars.each do |car| %>
+  <%= "#{car.year} #{car.color} #{car.make}"%>
+<% end %>
+
+<%= link_to 'List a new car!', new_car_path %>

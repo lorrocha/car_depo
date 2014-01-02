@@ -17,7 +17,6 @@ feature 'Admin can create car', %q{
     visit '/cars'
     expect(page).to have_content('List a new car!')
 
-
     click_on 'List a new car!'
     fill_in 'Make', with: 'Mazda'
     fill_in 'Color', with: 'blue'
@@ -33,9 +32,20 @@ feature 'Admin can create car', %q{
 
     click_on 'List a new car!'
     click_on 'Create Car'
-    expect(page).to have_content("make can't be blank")
+    expect(page).to have_content("Makecan't be blank")
   end
 
+  it 'can add a description to the car' do
+    visit '/cars/new'
 
+    fill_in 'Make', with: 'Mazda'
+    fill_in 'Color', with: 'blue'
+    fill_in 'Year', with: '1999'
+    fill_in 'Mileage', with: '80000'
+    fill_in 'Description', with: 'GABBA GAABBBAA GGADJWNDEIJNIKEFF'
+    click_on 'Create Car'
+
+    expect(page).to have_content("Mazda")
+  end
 
 end
